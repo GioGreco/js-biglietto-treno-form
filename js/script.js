@@ -79,23 +79,31 @@ function generateTicket(){
     let distance = parseInt(document.getElementById('distance').value);
     let age = parseInt(document.getElementById('age').value);
 
-    if(age < 18){
-        let ticketPrice = ((costPerKm * distance) / 100) * 80;
-        let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
-        let par3 = document.getElementById('ticket-price');
-        par3.innerHTML = price;
-    }
-    else if(age > 65){
-        let ticketPrice = ((costPerKm * distance) / 100) * 60;
-        let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
-        let par3 = document.getElementById('ticket-price');
-        par3.innerHTML = price;
+    if(isNaN(age) || isNaN(distance)){
+        alert('Devi inserire tutti i dati in formato numerico!');
     }
     else{
-        let ticketPrice = costPerKm * distance;
-        let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
-        let par3 = document.getElementById('ticket-price');
-        par3.innerHTML = price;
+        const list = ticket.classList;
+        list.toggle('d-none');
+
+        if(age < 18){
+            let ticketPrice = ((costPerKm * distance) / 100) * 80;
+            let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
+            let par3 = document.getElementById('ticket-price');
+            par3.innerHTML = price;
+        }
+        else if(age > 65){
+            let ticketPrice = ((costPerKm * distance) / 100) * 60;
+            let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
+            let par3 = document.getElementById('ticket-price');
+            par3.innerHTML = price;
+        }
+        else{
+            let ticketPrice = costPerKm * distance;
+            let price = `<p>Journey Price</p> € ${ticketPrice.toFixed(2)}`;
+            let par3 = document.getElementById('ticket-price');
+            par3.innerHTML = price;
+        }
     };
 
     let par1 = document.getElementById('trip-length');
@@ -108,11 +116,4 @@ function generateTicket(){
     par2.innerHTML = passengerAge;
 }
 
-//this function toggles the display property of the ticket
-function showTicket(){
-        const list = ticket.classList;
-        list.toggle('d-none');
-};
-
 btn.addEventListener('click', generateTicket);
-btn.addEventListener('click', showTicket);
