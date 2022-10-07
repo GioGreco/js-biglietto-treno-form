@@ -2,22 +2,31 @@
 
 let app = document.getElementById('app-js');
 
+const inputWrapper = document.createElement('div');
+inputWrapper.className = 'inputWrapper';
+app.appendChild(inputWrapper);
+
 //append first input box - distance
+inputWrapper.innerHTML += `<label for="distance">Quanti km vuoi percorrere?</label>`;
 const inputDistance = document.createElement('input');
-inputDistance.type = 'number';
+inputDistance.type = 'text';
 inputDistance.id = 'distance';
-inputDistance.value = '0';
-app.appendChild(inputDistance);
+inputDistance.name = 'trip-distance';
+inputDistance.placeholder = '- -';
+inputWrapper.appendChild(inputDistance);
 //append second input box - age
+inputWrapper.innerHTML += `<label for="age">Quanti hanni hai?</label>`;
 const inputAge = document.createElement('input');
-inputAge.type = 'number';
+inputAge.type = 'text';
 inputAge.id = 'age';
-inputAge.value = '0';
-app.appendChild(inputAge);
+inputAge.name = 'passenger-age';
+inputAge.placeholder = '- -';
+inputWrapper.appendChild(inputAge);
+
 //append button
 const createTicket = document.createElement('button');
 createTicket.id = 'btn';
-createTicket.textContent = 'Generate New Ticket';
+createTicket.innerHTML = `<i class="fa-solid fa-train"></i>`;
 app.appendChild(createTicket);
 //append ticket container
 const ticket = document.createElement('div');
