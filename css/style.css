@@ -17,6 +17,7 @@ body{
     font-family: var(--cubic-font);
     background-image: url('https://wallpaperaccess.com/full/1457224.jpg');
     background-size: cover;
+    overflow: hidden;
 }
 
 /* UTILITIES */
